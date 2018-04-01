@@ -1,6 +1,5 @@
 # ignore all
-*
-*/
+Ch*/*
 
 # allow any
 !*.nim
