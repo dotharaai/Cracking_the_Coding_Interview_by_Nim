@@ -15,14 +15,13 @@ proc printTable(table:seq):string=
 
 
 proc Ch1_5(a,b:string):bool=
-  # これだけ難しくないですか？？
   var table:seq[seq[int]]=newSeq[seq[int]](len(a))
   var table_back: seq[seq[int]]=newSeq[seq[int]](len(a))
   let cost_mismatch = 1
   let cost_slice = 1
   table.fill(newSeq[int](len(b)))
   for i in 0..len(table)-1:
-    table[i].fill(99)
+    table[i].fill(high(int))
 
   for ai in 0..len(table)-1:
     table[ai][0] = cost_slice * abs(ai-0)

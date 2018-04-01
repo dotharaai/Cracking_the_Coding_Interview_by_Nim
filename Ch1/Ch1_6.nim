@@ -19,6 +19,11 @@ proc Ch1_6(str:string):string=
       result.add(l&intToStr(c))
       c=1
 
+  if len(result) < len(str):
+    return result
+  else:
+    return str
+
 import unittest
 
 suite "description for this stuff":
@@ -32,8 +37,8 @@ suite "description for this stuff":
 
   test "no repetation":
     check:
-      Ch1_6("abcd") == "a1b1c1d1"
-      Ch1_6("bkbhere") == "b1k1b1h1e1r1e1"
+      Ch1_6("abcd") == "abcd"
+      Ch1_6("bkbhere") == "bkbhere"
 
   test "some repetations":
     check:

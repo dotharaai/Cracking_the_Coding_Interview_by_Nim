@@ -3,7 +3,6 @@ import system, macros, algorithm, tables, sets, lists, queues, intsets, critbits
 # Palindrome Permutation: Given a string, write a function to check if it is a permutation of a palin-
 # drome. A palindrome is a word or phrase that is the same forwards and backwards. A permutation
 # is a rea rrangement of letters. The palindrome does not need to be limited to just dictionary words.
-# Write a method to decide if two strings are anagrams or not.
 
 
 proc Ch1_4(s:string):bool=

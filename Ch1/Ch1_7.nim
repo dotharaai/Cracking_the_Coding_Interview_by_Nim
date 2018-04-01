@@ -13,7 +13,7 @@ proc Ch1_7(i:Image):Image=
     for y in 1..len(i):
       result[y][x] = i[x][y]
 
-#
+
 import unittest
 suite "description for this stuff":
 

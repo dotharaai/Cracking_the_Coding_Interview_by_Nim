@@ -22,7 +22,7 @@ suite "description for this stuff":
   test "anagram":
     # give up and stop if this fails
     check:
-      Ch1_2("abcd","dcab") == true
+      Ch1_2("abcd12","21dcab") == true
       Ch1_2("いながきごろう","ろうごながいき") == true
       Ch1_2("astronomer","moonstarer") == true
 

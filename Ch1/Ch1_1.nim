@@ -6,13 +6,9 @@ import system, macros, algorithm, tables, sets, lists, queues, intsets, critbits
 
 
 proc Ch1_1(s:string):bool=
-  var test = s.replace(" ","").toRunes()
-  #echo test
-  var sSet = toSet(test)
-  #echo sSet
+  let test:seq[Rune] = s.replace(" ","").toRunes()
+  let sSet:HashSet[Rune] = toSet(test)
   len(sSet) == len(test)
-
-
 
 
 
