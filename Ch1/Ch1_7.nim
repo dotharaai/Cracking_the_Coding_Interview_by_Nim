@@ -1,68 +1,26 @@
 import system, macros, algorithm, tables, sets, lists, queues, intsets, critbits, sequtils, strutils, math, future
 
-
-# Write an algorithm such that if an element in an MxN matrix is 0, its entire row and
-# column is set to 0.
-
+# Rotate Matrix: Given an image represented by an NxN matrix, where each pixel in the image is 4
+# bytes, write a method to rotate the image by 90 degrees. Can you do this in place?
 
 
 type
-  Matrix[W,H:static[int]] = array[1..W,array[1..H,int]]
+  Image[N:static[int]] = array[1..N,array[1..N,int]]
 
 
+proc Ch1_7(i:Image):Image=
+  for x in 1..len(i):
+    for y in 1..len(i):
+      result[y][x] = i[x][y]
 
-
-
-
-proc Ch1_7(m:Matrix):Matrix=
-  var m_row:array[1..len(m),int]
-  var m_col:array[1..len(m[1]),int]
-  var am = m
-  for l in 1..len(m):
-    for e in 1..len(m[l]):
-      if m[l][e] == 0:
-        m_row[l] = 1
-        m_col[e] = 1
-  for l in 1..len(am):
-    for e in 1..len(am[l]):
-      if m_row[l] == 1 or m_col[e] == 1:
-        am[l][e]=0
-  return am
-
-
-
-
-
-
-var m:Matrix[4,4] = [[1,0,0,1],[1,2,1,1],[1,2,3,4],[1,2,3,4]]
-
-echo Ch1_7(m)
-
-
+#
 import unittest
 suite "description for this stuff":
-  echo "suite setup: run once before the tests"
 
-
-  test "no zero":
+  test "rotate":
+    let image:Image[3] = [[1,2,3],[0,0,0],[0,0,0]]
     # give up and stop if this fails
-    let v:Matrix[4,4] = [[1,1,1,1],[1,2,1,1],[1,2,3,4],[1,2,3,4]]
     check:
-      Ch1_7(v) == [[1,1,1,1],[1,2,1,1],[1,2,3,4],[1,2,3,4]]
-
-
-
-  test "one zero":
-    let v:Matrix[4,4] = [[0,1,1,1],[1,2,1,1],[1,2,3,4],[1,2,3,4]]
-    check:
-      Ch1_7(v) == [[0, 0, 0, 0], [0, 2, 1, 1], [0, 2, 3, 4], [0, 2, 3, 4]]
-
-  test "some zeros":
-    let v:Matrix[4,4] = [[0,1,1,1],[1,2,1,1],[1,2,3,4],[1,2,3,0]]
-    check:
-      Ch1_7(v) == [[0, 0, 0, 0], [0, 2, 1, 0], [0, 2, 3, 0], [0, 0, 0, 0]]
-
-
-
+      Ch1_7(image) == [[1,0,0],[2,0,0],[3,0,0]]
 
   echo "suite teardown: run once after the tests"

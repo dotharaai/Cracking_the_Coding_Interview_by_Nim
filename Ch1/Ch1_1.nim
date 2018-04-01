@@ -1,8 +1,8 @@
 import system, macros, algorithm, tables, sets, lists, queues, intsets, critbits, sequtils, strutils, math, future, unicode
-# Implement an algorithm to determine if a string has all unique characters. What if you
-# can not use additional data structures?
 
-import unittest
+# Is Unique: Implement an algorithm to determine if a string has all unique characters. What if you
+# cannot use additional data structures?
+
 
 
 proc Ch1_1(s:string):bool=
@@ -13,6 +13,10 @@ proc Ch1_1(s:string):bool=
   len(sSet) == len(test)
 
 
+
+
+
+import unittest
 
 suite "description for this stuff":
   echo "suite setup: run once before the tests"

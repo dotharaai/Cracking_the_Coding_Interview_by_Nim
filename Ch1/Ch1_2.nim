@@ -1,19 +1,14 @@
-import system, macros, algorithm, tables, sets, lists, queues, intsets, critbits, sequtils, strutils, math, future, unicode
-# Write code to reverse a C-Style String. (C-String means that “abcd” is represented as
-# five characters, including the null character.)
+import system, macros, algorithm, tables, sets, lists, queues, intsets, critbits, sequtils, strutils, math, future
+
+# Check Permutation:
+# Given two strings, write a method to decide if one is a permutation of the　other.
 
 
-
-#var abc = "Write code to reverse a C-Style String. (C-String means that “abcd” is represented as five characters, including the null character.)"
-
-proc Ch1_2(s:string):string=
-  # どれでも通る
-  s.reversed().join()
-  # join(reversed(s))
-  # reversed(abc).join()
+proc Ch1_2(a,b:string):bool=
+  sorted(a,cmp) == sorted(b,cmp)
 
 
-
+#
 import unittest
 suite "description for this stuff":
   echo "suite setup: run once before the tests"
@@ -24,11 +19,17 @@ suite "description for this stuff":
   teardown:
     echo "run after each test"
 
-  test "true":
+  test "anagram":
     # give up and stop if this fails
     check:
-      Ch1_2("わたしまけましたわ") == "わたしまけましたわ"
-      Ch1_2("なかきよのとおのねふりのみなめさめなみのりふねのおとのよきかな") == "なかきよのとおのねふりのみなめさめなみのりふねのおとのよきかな"
-      Ch1_2("I am. I was.") == ".saw I .ma I"
+      Ch1_2("abcd","dcab") == true
+      Ch1_2("いながきごろう","ろうごながいき") == true
+      Ch1_2("astronomer","moonstarer") == true
+
+  test "not anagram":
+    check:
+      Ch1_2("not","anagram") == false
+      Ch1_2("abcd","bcde") == false
+      Ch1_2("abc","xyz") == false
 
   echo "suite teardown: run once after the tests"

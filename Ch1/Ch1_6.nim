@@ -1,28 +1,45 @@
 import system, macros, algorithm, tables, sets, lists, queues, intsets, critbits, sequtils, strutils, math, future
 
-# Write a method to replace all spaces in a string with ‘%20’.
-# bytes, write a method to rotate the image by 90 degrees. Can you do this in place?
+# String Compression: Implement a method to perform basic string compression using the counts
+# of repeated characters. For example, the string aabcccccaaa would become a2b1c5a3. If the
+# "compressed" string would not become smaller than the original string, your method should return
+# the original string. You can assume the string has only uppercase and lowercase letters (a - z).
 
 
 
-type
-  Image[N:static[int]] = array[1..N,array[1..N,int]]
+proc Ch1_6(str:string):string=
+  result = ""
+  var l:char
+  var c=1
+  for i in 0..len(str)-1:
+    l = str[i]
+    if str[i] == str[i+1]:
+      c+=1
+    else:
+      result.add(l&intToStr(c))
+      c=1
 
-
-proc Ch1_6(i:Image):Image=
-  for x in 1..len(i):
-    for y in 1..len(i):
-      result[y][x] = i[x][y]
-
-#
 import unittest
+
 suite "description for this stuff":
   echo "suite setup: run once before the tests"
 
-  test "rotate":
-    let image:Image[3] = [[1,2,3],[0,0,0],[0,0,0]]
-    # give up and stop if this fails
+  setup:
+    echo "run before each test"
+
+  teardown:
+    echo "run after each test"
+
+  test "no repetation":
     check:
-      Ch1_6(image) == [[1,0,0],[2,0,0],[3,0,0]]
+      Ch1_6("abcd") == "a1b1c1d1"
+      Ch1_6("bkbhere") == "b1k1b1h1e1r1e1"
+
+  test "some repetations":
+    check:
+      Ch1_6("aaa") == "a3"
+      Ch1_6("aabbbccc") == "a2b3c3"
+      Ch1_6("URRRRRRYYYYYYYYYY!!!!!!!!!") == "U1R6Y10!9"
+
 
   echo "suite teardown: run once after the tests"
