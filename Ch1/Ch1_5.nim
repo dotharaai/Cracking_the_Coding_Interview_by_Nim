@@ -23,14 +23,14 @@ proc Ch1_5(a,b:string):bool=
   for i in 0..len(table)-1:
     table[i].fill(high(int))
 
-  for ai in 0..len(table)-1:
+  for ai in 0..<len(table):
     table[ai][0] = cost_slice * abs(ai-0)
-  for bi in 0..len(table[0])-1:
+  for bi in 0..<len(table[0]):
     table[0][bi] = cost_slice * abs(0-bi)
 
 
-  for ai in 1..len(table)-1:
-    for bi in 1..len(table[0])-1:
+  for ai in 1..<len(table):
+    for bi in 1..<len(table[0]):
       table[ai][bi] = min(
         [table[ai-1][bi-1]+int(a[ai]!=b[bi])*cost_mismatch,
         table[ai][bi-1]+cost_slice,
