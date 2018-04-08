@@ -1,19 +1,22 @@
 import system, macros, algorithm, tables, sets, lists, queues, intsets, critbits, sequtils, strutils, math, future,strformat, unicode
 
-# Intersection: Given two (singly) linked lists, determine if the two lists intersect. Return the intersecting node. Note that the intersection is defined based on reference, not value. That is, if the kth node of the first linked list is the exact same node (by reference) as the jth node of the second linked list, then they are intersecting.
+# Loop Detection: Given a circular linked list, implement an algorithm that returns the node at the　beginning of the loop.
+# DEFINITION
+# Circular linked list: A (corrupt) linked list in which a node's next pointer points to an earlier node, so as to make a loop in the linked list.
+# EXAMPLE
+# Input: A -> B -> C -> 0 -> E - > C [the same C as earlier]
+# Output: C
 
 import myarray
 
-# O(N*M)で面白くない
+
 proc Ch2_8(a:MyArray):MyArray=
   result = MyArray(data:100)
   var
     turtle=a[0]
     rabbit=turtle.next
-  echo "段階1"
   while true:
     if turtle.next == rabbit.next and turtle.data == rabbit.data:
-      echo "段階２"
       turtle = a[0]
       rabbit = rabbit.next
       while true:
