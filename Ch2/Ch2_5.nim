@@ -8,7 +8,7 @@ import system, macros, algorithm, tables, sets, lists, queues, intsets, critbits
 # FOLLOW UP
 # Suppose the digits are stored in forward order. Repeat the above problem.
 # Input: (6 -> 1 -> 7) + (2 -> 9 -> 5).Thatis,617 + 295.
-# Output: 9 - > 1 - > 2. That is, 912 .v
+# Output: 9 - > 1 - > 2. That is, 912 .
 import myarray
 
 proc Ch2_5(a,b:MyArray):MyArray=
