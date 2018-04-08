@@ -5,14 +5,16 @@ import system, macros, algorithm, tables, sets, lists, queues, intsets, critbits
 import myarray
 
 
-
-
 proc Ch2_2(a:MyArray,k:int):MyArray=
   # k<len(a)とする
   # これは空配列[]が表現できなかった都合上である
   result = MyArray(data:a[k].data)
   for i in (k+1)..<len(a):
       result.append(a[i].data)
+
+proc Ch2_2_remake(a:MyArray,k:int):MyArray=
+  # 後ろ方向へは連結しているのでk番目を先頭にすればよい
+  result = a[k]
 
 
 
